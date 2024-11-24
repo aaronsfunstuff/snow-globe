@@ -13,5 +13,5 @@ A fun and interactive snowglobe web app that reacts to clicks and device motion!
 ---
 
 ## Credits
--**[Hackclub_Tutorial](https://jams.hackclub.com/jam/custom-snowglobe)**
+- **[Hackclub_Tutorial](https://jams.hackclub.com/jam/custom-snowglobe)**
 - **[tsParticles](https://github.com/matteobruni/tsparticles):** For rendering the snowfall particles.  
