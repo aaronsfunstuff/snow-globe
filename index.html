@@ -1,20 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Snowglobe</title>
-        <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/276/276127.png"/>
-        <link rel="stylesheet" href="styles.css"/>
-    </head>
-    <body>
-<div id="snowglobe">
-<div id="particles">
 
-</div>
-<div id="ground>
-</div>
-    </body>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
-    <script src="script.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Snowglobe</title>
+  <link href="styles.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js "></script>
+</head>
+
+<body id="body">
+  <div id="snowglobe">
+    <div id="particles"></div>
+    <div id="ground"></div>
+  </div>
+  <audio id="music">
+    <source src="music.ogg" type="audio/ogg">
+    </source>
+  </audio>
+
+  <script>
+    let globe = document.getElementById("snowglobe");
+    let particles;
+    let audio = document.getElementById('music');
+
+    function calculateAcceleration(event) {
+      const {x, y, z} = event.accelerationIncludingGravity;
+      return Math.sqrt(x * x + y * y + z * z);
+    }
+
+    function shakeItUp() {
+      particles.play();
+      audio.play();
+      globe.classList.add("shake");
+      setTimeout(() => {globe.classList.remove("shake")}, 1100);
+    }
+
+    tsParticles.loadJSON('particles', 'particles.json')
+      .then(function () {
+        particles = tsParticles.domItem(0);
+        particles.pause();
+
+        globe.addEventListener('click', () => {
+          shakeItUp();
+        });
+
+        window.addEventListener("devicemotion", (event) => {
+          const acceleration = calculateAcceleration(event);
+          if (acceleration > 23) {
+            shakeItUp();
+          }
+        });
+      });
+</script>
+</body>
 </html>

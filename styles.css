@@ -10,11 +10,13 @@ body{
     overflow:hidden;
     justify-content: center;
     align-items: center;
+    background-color:#212122;
 }
 #snowglobe{
     width: 85vmin;
     height:85vmin;
-    background: #45b3e0;
+    background: url('https://media.craiyon.com/2023-06-22/adf4395c33804b928abd47ef5cad3026.webp')
+    center/cover;
     border-radius: 100%;
     overflow: hidden;
     margin:auto;
@@ -29,6 +31,7 @@ body{
     height:25%;
     width: 100%;
     background:#bebebe;
+    opacity:0%;
 }
 @keyframes shake{
     0%,
